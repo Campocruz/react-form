@@ -1,3 +1,4 @@
+import { useState } from "react";
 export default function AppMain() {
 
   const articleList = [
@@ -11,12 +12,19 @@ export default function AppMain() {
     },
   ];
 
+  const [article, setArticle] = useState(articleList)
+  const [newArticle, setNewArticle] = useState('')
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    setArticle([newArticle, ...article])
+    setNewArticle('')
+  }
 
   return (
     <>
       <div className="container">
-        <h2>Card List</h2>
+        <h2>Article List</h2>
         {
           articleList.map((article) => (
             <div key={article.id} className="card">
@@ -25,6 +33,10 @@ export default function AppMain() {
               </div>
             </div>))
         }
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={newArticle} onChange={e => setNewArticle(e.target.value)} />
+          <button>Add New Article</button>
+        </form>
       </div>
     </>
   )
