@@ -1,9 +1,10 @@
+import AppMain from "./components/app_components/AppMain"
 
 function App() {
 
   return (
     <>
-      <h1>First commit</h1>
+      <AppMain />
     </>
   )
 }
