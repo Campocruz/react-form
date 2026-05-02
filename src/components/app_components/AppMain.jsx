@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AppItemCard from "../main-components/AppItemCard";
 
 const articleList = [
   {
@@ -39,13 +40,7 @@ export default function AppMain() {
         </form>
       </div>
       {
-        articles.map((item, i) => (
-          <div key={i} className="card">
-            <div className="card-heater">
-              <h3>{item.title}</h3>
-            </div>
-            <button className="btn btn-dark" onClick={() => deleteItem(i)}><i className="bi bi-trash"></i></button>
-          </div>))
+        articles.map((item, i) => (<AppItemCard key={i} id={i} title={item.title} onDelate={deleteItem} />))
       }
     </>
   )
