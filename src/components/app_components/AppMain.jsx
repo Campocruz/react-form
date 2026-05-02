@@ -33,15 +33,26 @@ export default function AppMain() {
   return (
     <>
       <div className="container">
-        <h2>Article List</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={newArticle} onChange={e => setNewArticle(e.target.value)} />
-          <button>Add New Article</button>
-        </form>
+        <h2 className="text-center">Article List</h2>
+        <hr />
+        <div className="row">
+          <div className="col-8">
+            <div>
+              <h3>Your List</h3>
+              {
+                articles.map((item, i) => (<AppItemCard key={i} id={i} title={item.title} onDelate={deleteItem} />))
+              }
+            </div>
+          </div>
+          <div className="col-4 mt-5 ">
+            <form onSubmit={handleSubmit}>
+              <input type="text" value={newArticle} onChange={e => setNewArticle(e.target.value)} />
+              <button>Add New Article</button>
+            </form>
+          </div>
+        </div>
       </div>
-      {
-        articles.map((item, i) => (<AppItemCard key={i} id={i} title={item.title} onDelate={deleteItem} />))
-      }
+
     </>
   )
 }
