@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AppItemCard from "../main-components/AppItemCard";
+import AppFormAddItem from "../main-components/AppFormAddItem";
 
 const articleList = [
   {
@@ -15,7 +16,7 @@ const articleList = [
 export default function AppMain() {
 
   const [articles, setArticles] = useState(articleList)
-  const [newArticle, setNewArticle] = useState('Pino')
+  const [newArticle, setNewArticle] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -45,10 +46,7 @@ export default function AppMain() {
             </div>
           </div>
           <div className="col-4 mt-5 ">
-            <form onSubmit={handleSubmit}>
-              <input type="text" value={newArticle} onChange={e => setNewArticle(e.target.value)} />
-              <button>Add New Article</button>
-            </form>
+            <AppFormAddItem inputValue={newArticle} formSubmit={handleSubmit} renderValue={setNewArticle} />
           </div>
         </div>
       </div>
